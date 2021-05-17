@@ -24,7 +24,7 @@ let connection = ViaBTCConnection(apiKey: apiKey)
 connection.acquireHashrate { result in
     switch result {
     case .success(let hashRate):
-        let hashRateMHs = $0.hashrate24hour / 1_000_000
+        let hashRateMHs = $0.hashrate24Hour / 1_000_000
         
         print("[\($0.activeWorkers)] Hash Rate: \(hashRateMHs) MH/s")
         
