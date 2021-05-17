@@ -51,7 +51,10 @@ public class ViaBTCConnection {
                 return
             }
             
-            guard let parsedResponse = try? JSONDecoder().decode(T.self, from: data) else {
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            
+            guard let parsedResponse = try? decoder.decode(T.self, from: data) else {
                 completionHandler(.failure(.invalidResponse))
 
                 return
